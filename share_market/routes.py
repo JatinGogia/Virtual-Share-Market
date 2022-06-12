@@ -1,6 +1,8 @@
+from http.client import HTTPResponse
 import os
 import io
 import threading
+from traceback import print_tb
 from share_market import app, db
 from share_market import Reliance_Company, TCS_Company, Infosys_Company, Wipro_Company, LandT_Company, HDFC_Company, SBI_Company, Zee_Media_Company, Ashok_Leyland_Company, Tech_Mahindra_Company
 from flask import Flask, render_template, url_for, redirect, request
@@ -16,6 +18,13 @@ from flask import flash
 
 
 page_name = None
+
+p0=os.getcwd()
+p1=os.path.join(p0,"share_market")
+p2=os.path.join(p1,"static")
+p3=os.path.join(p2,"images")
+
+
 
 @app.route("/")
 @app.route("/Home")
@@ -124,7 +133,11 @@ def Reliance():
     ax = plt2.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])
-    plt2.savefig('static\images\Reliancegraph.png')
+    p0=os.getcwd()
+    p1=os.path.join(p0,"share_market")
+    p2=os.path.join(p1,"static")
+    p3=os.path.join(p2,"images")
+    plt2.savefig(os.path.join(p3,"Reliancegraph.png"))
     image_file = url_for('static', filename='images/Reliancegraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -169,7 +182,11 @@ def TCS():
     ax = plt.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])
-    plt.savefig('static\images\TCSgraph.png')
+    p0=os.getcwd()
+    p1=os.path.join(p0,"share_market")
+    p2=os.path.join(p1,"static")
+    p3=os.path.join(p2,"images")
+    plt.savefig(os.path.join(p3,"TCSgraph.png"))
     image_file = url_for('static', filename='images/TCSgraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -214,7 +231,11 @@ def Infosys():
     ax = plt4.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])   
-    plt4.savefig('static\images\Infosysgraph.png')
+    p0=os.getcwd()
+    p1=os.path.join(p0,"share_market")
+    p2=os.path.join(p1,"static")
+    p3=os.path.join(p2,"images")
+    plt4.savefig(os.path.join(p3,"Infosysgraph.png"))
     image_file = url_for('static', filename='images/Infosysgraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -260,7 +281,7 @@ def Wipro():
     ax = plt3.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])
-    plt3.savefig('static\images\Wiprograph.png')
+    plt3.savefig(os.path.join(p3,"Wiprograph.png"))
     image_file = url_for('static', filename='images/Wiprograph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -305,7 +326,7 @@ def LandT():
     ax = plt4.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])   
-    plt4.savefig('static\images\L&Tgraph.png')
+    plt4.savefig(os.path.join(p3,'L&Tgraph.png'))
     image_file = url_for('static', filename='images/L&Tgraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -350,7 +371,7 @@ def HDFC():
     ax = plt4.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])   
-    plt4.savefig('static\images\HDFCgraph.png')
+    plt4.savefig(os.path.join(p3,'HDFCgraph.png'))
     image_file = url_for('static', filename='images/HDFCgraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -396,7 +417,7 @@ def SBI():
     ax = plt4.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])   
-    plt4.savefig('static\images\SBIgraph.png')
+    plt4.savefig(os.path.join(p3,'SBIgraph.png'))
     image_file = url_for('static', filename='images/SBIgraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -441,7 +462,7 @@ def Zee_Media():
     ax = plt4.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])   
-    plt4.savefig('static\images\Zee_Mediagraph.png')
+    plt4.savefig(os.path.join(p3,'Zee_Mediagraph.png'))
     image_file = url_for('static', filename='images/Zee_Mediagraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -487,7 +508,7 @@ def Ashok_Leyland():
     ax = plt4.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])   
-    plt4.savefig('static\images\Ashok_Leylandgraph.png')
+    plt4.savefig(os.path.join(p3,'Ashok_Leylandgraph.png'))
     image_file = url_for('static', filename='images/Ashok_Leylandgraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -532,7 +553,7 @@ def Tech_Mahindra():
     ax = plt4.gca()
     ax.set_facecolor('xkcd:navy')
     ax.axes.xaxis.set_ticks([])   
-    plt4.savefig('static\images\Tech_Mahindragraph.png')
+    plt4.savefig(os.path.join(p3,'Tech_Mahindragraph.png'))
     image_file = url_for('static', filename='images/Tech_Mahindragraph.png')
     image_file1 = url_for('static', filename='images/reliance industries.png')
     image_file2 = url_for('static', filename='images/TCS.png')
@@ -547,7 +568,7 @@ def Tech_Mahindra():
     return render_template('TechMahindraPage.html', details=Tech_Mahindra.details, image_file=image_file, image_file1=image_file1, image_file2=image_file2, image_file3=image_file3, image_file4=image_file4, image_file5=image_file5, image_file6=image_file6, image_file7=image_file7, image_file8=image_file8, image_file9=image_file9, image_file10=image_file10)
 
 
-@app.route(f'/', methods=['GET', 'POST'])
+@app.route(f'/{page_name}', methods=['GET', 'POST'])
 def buy_calcn():
     if request.method == 'POST':
         quantity = int(request.form.get('quantity'))
@@ -575,9 +596,9 @@ def buy_calcn():
         db.session.commit()
         
         amount = Amount.query.all()
-        amount_a = amount.amount + quantity * price_now
+        amount_a = amount[0].amount - quantity * price_now
         final_amount = Amount(amount=amount_a)
-        db.session.delete(amount)
+        Amount.query.filter_by(id=amount[0].id).delete()
         db.session.commit()
         db.session.add(final_amount)
         db.session.commit()
@@ -585,8 +606,9 @@ def buy_calcn():
     return redirect('/Portfolio')
 
 
-@app.route(f'/', methods=['GET', 'POST'])
+@app.route(f'/{page_name}/sell', methods=['GET', 'POST'])
 def sell_calcn():
+    
     if request.method == 'POST':
         quantity = int(request.form.get('quantity'))
         price_now = float(request.form.get('current_price'))
@@ -594,42 +616,46 @@ def sell_calcn():
         totalprice = float(quantity) * price_now
 
         record = Portfolio.query.filter_by(companyname=page_name).first()
-        available_quantity = record.quantity
+        if Portfolio.query.filter_by(companyname=page_name).first()!=None:
+            available_quantity = record.quantity
 
-        if quantity <= available_quantity:
-            transaction_1 = Transaction(companyname=page_name, typetransact='Sell', quantity=quantity, pricebought=price_now, totalprice=totalprice)
+            if quantity <= available_quantity:
+                transaction_1 = Transaction(companyname=page_name, typetransact='Sell', quantity=quantity, pricebought=price_now, totalprice=totalprice)
 
-            db.session.add(transaction_1)
-            db.session.commit()
-
-
-            if Portfolio.query.filter_by(companyname=page_name).first() == None:
-                pass
-            else:
-                portfolio = Portfolio.query.filter_by(companyname=page_name).first()
-                quantity = portfolio.quantity - quantity
-                totalprice = quantity * price_now
-                db.session.delete(portfolio)
+                db.session.add(transaction_1)
                 db.session.commit()
 
-            portfolio_1 = Portfolio(companyname=page_name, quantity=quantity, totalinvestment=totalprice)
 
-            db.session.add(portfolio_1)
-            db.session.commit()
+                if Portfolio.query.filter_by(companyname=page_name).first() == None:
+                    pass
+                else:
+                    portfolio = Portfolio.query.filter_by(companyname=page_name).first()
+                    quantity = portfolio.quantity - quantity
+                    totalprice = quantity * price_now
+                    db.session.delete(portfolio)
+                    db.session.commit()
 
-            amount = Amount.query.all()
-            amount_a = amount.amount - quantity * price_now
-            final_amount = Amount(amount=amount_a)
-            db.session.delete(amount)
-            db.session.commit()
-            db.session.add(final_amount)
-            db.session.commit()
+                portfolio_1 = Portfolio(companyname=page_name, quantity=quantity, totalinvestment=totalprice)
 
-            return redirect('/Portfolio')
+                db.session.add(portfolio_1)
+                db.session.commit()
+
+                amount = Amount.query.all()
+                amount_a = amount[0].amount + quantity * price_now
+                final_amount = Amount(amount=amount_a)
+                Amount.query.filter_by(id=amount[0].id).delete()
+                db.session.commit()
+                db.session.add(final_amount)
+                db.session.commit()
+
+                return redirect('/Portfolio')
+            else:
+                flash(f'Exceeded Available Quantities Present In Portfolio = {available_quantity}')
+                return redirect(f'/{page_name}')
         else:
-            flash(f'Exceeded Available Quantities Present In Portfolio = {available_quantity}')
-            return redirect(f'/{page_name}')
-
+                flash(f'Shares not present in portfolio to sell')
+                return redirect(f'/{page_name}')
+ 
 
 def transaction_details():
     transactions = Transaction.query.all()
